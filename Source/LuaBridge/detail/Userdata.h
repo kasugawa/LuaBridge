@@ -645,7 +645,15 @@ struct StackHelper <T, false>
 
   static inline T const& get (lua_State* L, int index)
   {
-    return *Userdata::get <T> (L, index, true);
+ 	// it may cause a runtime crash if you pass a nil value in lua code
+	// this way, at least it will not crash
+  	T* ptr = Userdata::get<T>(L, index, true);
+   	if (!ptr)
+   	{
+   		T t;
+		return t;
+	}
+	return *Userdata::get <T> (L, index, true);
   }
 };
 
