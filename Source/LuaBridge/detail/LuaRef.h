@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*
   https://github.com/vinniefalco/LuaBridge
-  
+
   Copyright 2012, Vinnie Falco <vinnie.falco@gmail.com>
   Copyright 2008, Nigel Atkinson <suprapilot+LuaCode@gmail.com>
 
@@ -812,8 +812,8 @@ public:
   void pop (lua_State* L)
   {
     assert (equalstates (L, m_L));
-    luaL_unref (m_L, LUA_REGISTRYINDEX, m_ref);
-    m_ref = luaL_ref (m_L, LUA_REGISTRYINDEX);
+    luaL_unref (L, LUA_REGISTRYINDEX, m_ref);
+    m_ref = luaL_ref (L, LUA_REGISTRYINDEX);
   }
 
   //----------------------------------------------------------------------------
